@@ -1,0 +1,118 @@
+.json-tree__node {
+  $row-height: 24px; // 每一行的高度
+
+  display: flex;
+  font-size: 14px;
+  font-family: Consolas,
+                "YaHei Consolas Hybrid",
+                Monaco,
+                "Source Code Pro",
+                monospace;
+  align-items: flex-start;
+  color: #000;
+
+  // position: relative;
+  // &:after {
+  //   content: "";
+  //   position: absolute;
+  //   left: 6px;
+  //   top: 12px;
+  //   width: 16px;
+  //   border-top: 1px dashed #ccc;
+  // }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  // 收起、展开图标
+  .json-tree__toggle {
+    height: $row-height;
+    line-height: $row-height;
+    padding-right: 5px;
+    font-style: normal;
+
+    &--hidden {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  .json-tree__key {
+    font-weight: bold;
+
+    // 如果值是数组中的项, 则使用其所在数组的索引作为 key 显示
+    &--number {
+      color: #aaa;
+    }
+  }
+
+  .json-tree__val {
+    &--string {
+      color: #008000;
+    }
+
+    &--symbol {
+      color: #C00A1E;
+    }
+
+    &--number {
+      color: #0000ff;
+    }
+
+    &--null,
+    &--undefined {
+      color: #808080;
+      // color: #AC80FF;
+    }
+  }
+
+  .json-tree__content {
+    position: relative;
+
+    &--collapse {
+      & > .json-tree__node {
+        display: none;
+      }
+
+      .json-tree__connector-line {
+        display: none;
+      }
+    }
+
+    &__header,
+    &__footer {
+      box-sizing: border-box;
+      height: $row-height;
+      line-height: $row-height;
+    }
+  }
+
+  .json-tree__cnt-tips {
+    font-style: italic;
+    color: #ccc;
+    font-size: 13px;
+    margin-left: 5px;
+  }
+
+  .json-tree__connector-line {
+    width: 0;
+    position: absolute;
+    top: $row-height;
+    bottom: $row-height;
+    left: 2px;
+    border-left: 1px dashed #ccc;
+  }
+
+  .json-tree__colon {
+    padding-right: 5px;
+  }
+
+  // []
+  .json-tree__bracket {
+    &--left, // [
+    &--right { // ]
+
+    }
+  }
+}
