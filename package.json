@@ -1,0 +1,57 @@
+{
+  "name": "json-tree",
+  "version": "1.0.0",
+  "description": "JSON tree view for Vue",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "lib": "vue-cli-service build --target lib --name JsonTree --dest dist src/index.js",
+    "publish": "npm run lib && npm publish --registry https://www.npmjs.com/",
+    "docs": "vuepress dev docs-src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathink12/json-tree.git"
+  },
+  "keywords": [
+    "JSON",
+    "tree",
+    "vue",
+    "view"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mathink12/json-tree/issues"
+  },
+  "homepage": "https://github.com/mathink12/json-tree#readme",
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.9",
+    "@vue/cli-plugin-eslint": "^4.5.9",
+    "@vue/cli-plugin-unit-jest": "^4.5.9",
+    "@vue/cli-service": "^4.5.9",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "@vuepress/plugin-back-to-top": "^1.7.1",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.13.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.1.0",
+    "eslint-plugin-vue": "^7.1.0",
+    "lint-staged": "^10.5.1",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "vue": "^2.6.12",
+    "vue-template-compiler": "^2.6.12",
+    "vuepress": "^1.7.1"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
