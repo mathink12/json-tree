@@ -29,8 +29,12 @@
   .json-tree__toggle {
     height: $row-height;
     line-height: $row-height;
-    padding-right: 5px;
+    padding-right: 4px;
     font-style: normal;
+
+    i {
+      font-style: normal;
+    }
 
     &--hidden {
       visibility: hidden;

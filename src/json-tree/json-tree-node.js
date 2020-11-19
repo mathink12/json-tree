@@ -91,15 +91,22 @@ export default {
       if (jsonDataType === 'string') return `"${jsonData}"`
       return jsonData // data 为 number 类型
     },
-    cntTip () {
+    childCnt () {
       const { jsonData, jsonDataType } = this
 
+      if (jsonDataType === 'array') return jsonData.length
+      if (jsonDataType === 'object') return Object.keys(jsonData).length
+      return 0
+    },
+    cntTip () {
+      const { jsonDataType, childCnt } = this
+
       if (jsonDataType === 'array') {
-        return `// ${jsonData.length} items`
+        return `// ${childCnt} items`
       }
 
       if (jsonDataType === 'object') {
-        return `// ${Object.keys(jsonData).length} keys`
+        return `// ${childCnt} keys`
       }
 
       return ''
