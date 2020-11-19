@@ -1,14 +1,33 @@
 # JsonTree
 
-<JsonView
-  :json-data="{
-    name: 'Tom',
-    age: 7,
-    nums: [1, 1, 2, 3, 5, 8, 13, 21, 34],
-    techs: [
-      { text: 'coding', label: 1 },
-      { text: 'fishing', label: 2 },
-      { text: 'gaming', label: 3 }
-    ]
-  }"
-/>
+## Playground
+<JsonTreeDemo />
+
+
+## Getting started
+```bash
+npm i json-tree
+```
+
+```js
+// main.js
+import Vue from 'vue'
+import JsonTree from 'json-tree'
+
+Vue.component('JsonTree', JsonTree)
+```
+
+```vue
+<JsonTree :json-data="{ name: 'Tom', age: 7 }" />
+```
+
+## Props
+
+
+## Slots
+
+
+## Events
+
+
+## Methods

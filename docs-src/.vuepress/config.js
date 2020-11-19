@@ -8,9 +8,12 @@ module.exports = {
   markdown: {
     lineNumbers: true
   },
-  // themeConfig: {},
+  themeConfig: {
+    sidebar: true
+  },
   chainWebpack: config => {
     config.resolve.alias
+      .set('@', resolve('src'))
       .set('@lib', resolve('dist'))
   }
 }

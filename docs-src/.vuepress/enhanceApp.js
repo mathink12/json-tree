@@ -1,5 +1,9 @@
-import JsonView from '@lib/JsonTree.common.js'
-import "@lib/JsonTree.css"
+import ElementUI from 'element-ui'
+// import JsonTree from '@lib/JsonTree.common.js'
+import JsonTree from '@/json-tree/JsonTree.vue'
+
+import 'element-ui/lib/theme-chalk/index.css'
+// import "@lib/JsonTree.css"
 
 // 使用异步函数也是可以的
 export default ({
@@ -9,5 +13,6 @@ export default ({
   siteData, // 站点元数据
   isServer // 当前应用配置是处于 服务端渲染 或 客户端
 }) => {
-  Vue.component('JsonView', JsonView)
+  Vue.use(ElementUI)
+  Vue.component('JsonTree', JsonTree)
 }
