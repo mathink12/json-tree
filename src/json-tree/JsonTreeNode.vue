@@ -101,6 +101,7 @@
           :json-keys="[...jsonKeys, i]"
           :json-data="childData"
           :indent="indent"
+          :expand-deep="expandDeep"
           :deep="deep + 1"
           :show-line="showLine">
           <template v-for="(_, slot) of $scopedSlots"

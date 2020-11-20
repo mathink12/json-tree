@@ -3,7 +3,8 @@
     <JsonTreeNode ref="jsonTreeNode"
       :json-data="jsonData"
       :show-line="showLine"
-      :indent="indent">
+      :indent="indent"
+      :expand-deep="expandDeep">
       <template v-for="(_, slot) of $scopedSlots"
         v-slot:[slot]="scope">
         <slot :name="slot" v-bind="scope"></slot>
@@ -35,6 +36,11 @@ export default {
     indent: {
       type: [String, Number],
       default: '20px'
+    },
+    // 默认展开的层级
+    expandDeep: {
+      type: Number,
+      default: 2
     }
   },
   methods: {

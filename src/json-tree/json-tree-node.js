@@ -12,6 +12,11 @@ export default {
       type: [String, Number],
       default: '20px'
     },
+    // 默认展开的层级
+    expandDeep: {
+      type: Number,
+      default: 2
+    },
     jsonKey: {
       type: [String, Number]
     },
@@ -30,8 +35,14 @@ export default {
     }
   },
   data () {
+    const { deep, expandDeep } = this
+    let localCollapse = !!this.collapse
+    if (deep < expandDeep) {
+      localCollapse = false
+    }
+
     return {
-      localCollapse: !!this.collapse
+      localCollapse
     }
   },
   computed: {
