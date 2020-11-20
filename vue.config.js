@@ -1,6 +1,7 @@
-const path = require('path')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// const path = require('path')
 
-const resolve = dir => path.join(__dirname, '.', dir)
+// const resolve = dir => path.join(__dirname, '.', dir)
 
 module.exports = {
   // 修改 src 目录 为 examples 目录
@@ -11,20 +12,32 @@ module.exports = {
       filename: 'index.html'
     }
   },
+  configureWebpack: config => {
+    if (process.env.NODE_ENV === 'production') {
+      config.optimization.minimizer.push(
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            warnings: false,
+            compress: {
+              drop_debugger: true,
+              drop_console: true
+            }
+          },
+          sourceMap: true,
+          parallel: true
+        })
+      )
+    }
+  },
   chainWebpack: config => {
-    // config.resolve.alias
-    //   .set('@', resolve('examples'))
-    //   .set('@lib', resolve('dist'))
-
     config.module
-      .rule('js')
-      .include
-      .add(resolve('src'))
-      .end()
-      .use('babel')
-      .loader('babel-loader')
+      // vue-template-compiler 去掉标签之间的空格
+      // https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-template-compiler/README.md#%E9%80%89%E9%A1%B9
+      .rule('vue')
+      .use('vue-loader')
+      .loader('vue-loader')
       .tap(options => {
-        // 修改它的选项...
+        options.compilerOptions.preserveWhitespace = false
         return options
       })
 

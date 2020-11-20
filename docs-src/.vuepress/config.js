@@ -15,5 +15,14 @@ module.exports = {
     config.resolve.alias
       .set('@', resolve('src'))
       .set('@lib', resolve('dist'))
+
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .loader('vue-loader')
+      .tap(options => {
+        options.compilerOptions.preserveWhitespace = false
+        return options
+      })
   }
 }

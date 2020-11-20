@@ -2,9 +2,9 @@
   "name": "json-tree",
   "version": "1.0.0",
   "description": "JSON tree view for Vue",
-  "main": ".eslintrc.js",
+  "main": "lib/JsonTree.common.js",
   "scripts": {
-    "lib": "vue-cli-service build --target lib --name JsonTree --dest dist src/index.js",
+    "lib": "vue-cli-service build --target lib --name JsonTree --dest lib src/index.js",
     "publish": "npm run lib && npm publish --registry https://www.npmjs.com/",
     "docs": "vuepress dev docs-src"
   },
@@ -43,6 +43,7 @@
     "lint-staged": "^10.5.1",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.7.1"
