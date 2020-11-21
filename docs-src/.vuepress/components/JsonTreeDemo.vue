@@ -1,18 +1,18 @@
 <template>
   <div class="json-tree-demo">
     <el-card>
-      <el-form label-width="70px" label-position="left">
-        <el-form-item label="连接线">
+      <el-form label-width="180px" label-position="left">
+        <el-form-item label="连接线（Connector Line）">
           <el-switch v-model="showLine" />
         </el-form-item>
-        <el-form-item label="图标风格">
+        <el-form-item label="图标风格（Toggle Icon）">
           <el-radio-group v-model="toggle" size="small">
             <el-radio-button label="default">默认风格</el-radio-button>
             <el-radio-button label="caret">自定义风格 1</el-radio-button>
             <el-radio-button label="arrow">自定义风格 2</el-radio-button>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="层级缩进">
+        <el-form-item label="层级缩进（Deep Indent）">
           <el-radio-group v-model="indent" size="small">
             <el-radio-button
               v-for="(item, i) in indents"
@@ -22,52 +22,54 @@
             </el-radio-button>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="展开层级">
-          <el-input-number v-model="deep" size="small" />
+        <el-form-item label="展开层级（Expand Deep）">
+          <el-input-number v-model="deep" :min="0" size="small" />
         </el-form-item>
       </el-form>
 
     </el-card>
 
     <div style="margin: 20px 0;">
-      <el-button size="small" @click="onExpandAll">全部展开</el-button>
-      <el-button size="small" @click="onCollapseAll">全部收起</el-button>
+      <el-button size="small" @click="onExpandAll">
+        全部展开（Expand All）
+      </el-button>
+      <el-button size="small" @click="onCollapseAll">
+        全部收起（Collapse All）
+      </el-button>
     </div>
 
-    <JsonTree ref="jsonTree"
+    <JsonTree v-if="showJsonTree"
+      ref="jsonTree"
       :json-data="jsonData"
       :show-line="showLine"
-      :indent="indent">
-      <template v-if="toggle !== 'default'" #toggle="{ collapse }">
-        <i :class="calcToggleClass(collapse)"></i>
-      </template>
-      <template #count="{ count, type }">
-        （值类型：{{ type }}，共：{{ count }} 项）
-      </template>
-    </JsonTree>
+      :indent="indent"
+      :expand-deep="deep"
+    />
   </div>
 </template>
 
 <script>
+import { jsonData } from '../mock/data'
+
 export default {
   name: 'JsonTreeDemo',
   data () {
     return {
+      showJsonTree: true,
       showLine: true,
       indent: '20px',
       deep: 2,
       indents: ['5px', '10px', '20px', '30px', '40px', '50px'],
       toggle: 'default',
-      jsonData: {
-        name: 'Tom',
-        age: 7,
-        nums: [1, 1, 2, 3, 5, 8, 13, 21, 34],
-        techs: [
-          { text: 'coding', label: 1 },
-          { text: 'fishing', label: 2 },
-          { text: 'gaming', label: 3 }
-        ]
-      }
+      jsonData
+    }
+  },
+  watch: {
+    deep () {
+      this.showJsonTree = false
+      this.$nextTick(() => {
+        this.showJsonTree = true
+      })
     }
   },
   methods: {

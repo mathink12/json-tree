@@ -9,7 +9,14 @@ module.exports = {
     lineNumbers: true
   },
   themeConfig: {
-    sidebar: true
+    nav: [
+      { text: 'GitHub', link: 'https://github.com/mathink12/json-tree' }
+    ],
+    sidebar: [
+      '/',
+      '/getting-started/',
+      '/api/'
+    ]
   },
   chainWebpack: config => {
     config.resolve.alias
@@ -24,5 +31,15 @@ module.exports = {
         options.compilerOptions.preserveWhitespace = false
         return options
       })
-  }
+  },
+  plugins: [
+    // [
+    //   '@vuepress/last-updated',
+    //   {
+    //     transformer: (timestamp, lang) =>
+    //       format(timestamp, 'yyyy-MM-dd HH:mm:ss')
+    //   }
+    // ],
+    ['@vuepress/back-to-top']
+  ]
 }
