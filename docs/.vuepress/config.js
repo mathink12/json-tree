@@ -4,7 +4,7 @@ const resolve = dir => path.join(__dirname, '..', '..', dir)
 
 module.exports = {
   title: 'Json Tree',
-  // base: '/json-tree/',
+  base: '/json-tree/',
   markdown: {
     lineNumbers: true
   },

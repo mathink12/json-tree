@@ -6,7 +6,8 @@
   "scripts": {
     "lib": "vue-cli-service build --target lib --name JsonTree --dest lib src/index.js",
     "publish": "npm run lib && npm publish --registry https://www.npmjs.com/",
-    "docs": "vuepress dev docs-src"
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "repository": {
     "type": "git",

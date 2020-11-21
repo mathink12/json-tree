@@ -1,9 +1,8 @@
 # Getting started
 
 1. 安装 Install
-  ```bash
-  npm i json-tree # yarn add json-tree
-  ```
+
+  comming soon...
 
 2. 使用 Usage
   ```js
