@@ -19,6 +19,7 @@
       'json-tree__content--collapse': localCollapse
     }" @click.stop="onNodeClick">
       <div class="json-tree__content__header">
+        <!-- jsonKey: -->
         <span v-if="showJsonKey">
           <span v-text="jsonKey" :class="[
             'json-tree__key',
@@ -26,7 +27,11 @@
           ]"></span>
           <span class="json-tree__colon">:</span>
         </span>
+
+        <!-- json value collapsed -->
         <template v-if="localCollapse">
+
+          <!-- collapse: array -->
           <template v-if="jsonDataType === 'array'">
             <span v-text="shouldHideToggle ? '[]' : '[...]'"
               class="json-tree__bracket json-tree__bracket--collapse"
@@ -42,6 +47,7 @@
             </span>
           </template>
 
+          <!-- collapse: object -->
           <template v-else-if="jsonDataType === 'object'">
             <span v-text="shouldHideToggle ? '{}' : '{...}'"
               class="json-tree__brace json-tree__brace--collapse"
@@ -56,14 +62,23 @@
               </slot>
             </span>
           </template>
-          <span v-else v-text="displayedJsonVal"
+
+          <!-- collapse: string / number -->
+          <span v-else
             :class="[
               'json-tree__val',
               `json-tree__val--${jsonDataType}`
             ]">
+            <slot name="val"
+              v-bind:val="jsonData"
+              v-bind:type="jsonDataType">{{ displayedJsonVal }}</slot>
           </span>
         </template>
+
+        <!-- json value expanded -->
         <template v-else>
+
+          <!-- expand: array -->
           <span v-if="jsonDataType === 'array'">
             <span class="json-tree__bracket--left">[</span>
             <span class="json-tree__cnt-tips">
@@ -74,6 +89,8 @@
               </slot>
             </span>
           </span>
+
+          <!-- expand: object -->
           <span v-else-if="jsonDataType === 'object'">
             <span v-text="'{'" class="json-tree__brace--left"></span>
             <span class="json-tree__cnt-tips">
@@ -84,11 +101,16 @@
               </slot>
             </span>
           </span>
-          <span v-else v-text="displayedJsonVal"
+
+          <!-- expand: string / number -->
+          <span v-else
             :class="[
               'json-tree__val',
               `json-tree__val--${jsonDataType}`
             ]">
+            <slot name="val"
+              v-bind:val="jsonData"
+              v-bind:type="jsonDataType">{{ displayedJsonVal }}</slot>
           </span>
         </template>
       </div>
@@ -110,6 +132,11 @@
           </template>
         </JsonTreeNode>
       </template>
+
+      <!--
+        当且仅当值类型是 array 或 object 且是展开的时候
+        显示一个收尾的符号: ] 或 }
+      -->
       <div v-if="!localCollapse && ['array', 'object'].includes(jsonDataType)"
         class="json-tree__content__footer">
         <span v-if="jsonDataType === 'array'"
@@ -121,6 +148,8 @@
           class="json-tree__brace--right">
         </span>
       </div>
+
+      <!-- 层级的连接线 -->
       <div v-if="showLine" class="json-tree__connector-line"></div>
     </div>
   </div>
