@@ -43,8 +43,11 @@
       :json-data="jsonData"
       :show-line="showLine"
       :indent="indent"
-      :expand-deep="deep"
-    />
+      :expand-deep="deep">
+      <template v-if="toggle !== 'default'" #toggle="{ collapse }">
+        <i :class="calcToggleClass(collapse)"></i>
+      </template>
+    </JsonTree>
   </div>
 </template>
 
