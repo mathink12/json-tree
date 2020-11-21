@@ -21,10 +21,12 @@
       <div class="json-tree__content__header">
         <!-- jsonKey: -->
         <span v-if="showJsonKey">
-          <span v-text="jsonKey" :class="[
+          <span :class="[
             'json-tree__key',
             `json-tree__key--${typeof jsonKey}`
-          ]"></span>
+          ]">
+            <slot name="key" v-bind:item-key="jsonKey">{{ jsonKey }}</slot>
+          </span>
           <span class="json-tree__colon">:</span>
         </span>
 
@@ -70,7 +72,7 @@
               `json-tree__val--${jsonDataType}`
             ]">
             <slot name="val"
-              v-bind:val="jsonData"
+              v-bind:item-val="jsonData"
               v-bind:type="jsonDataType">{{ displayedJsonVal }}</slot>
           </span>
         </template>
@@ -109,7 +111,7 @@
               `json-tree__val--${jsonDataType}`
             ]">
             <slot name="val"
-              v-bind:val="jsonData"
+              v-bind:item-val="jsonData"
               v-bind:type="jsonDataType">{{ displayedJsonVal }}</slot>
           </span>
         </template>
