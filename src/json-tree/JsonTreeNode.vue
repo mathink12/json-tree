@@ -152,7 +152,8 @@
       </div>
 
       <!-- 层级的连接线 -->
-      <div v-if="showLine" class="json-tree__connector-line"></div>
+      <div v-if="showLine && !shouldHideToggle"
+        class="json-tree__connector-line"></div>
     </div>
   </div>
 </template>
