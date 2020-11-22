@@ -2,36 +2,23 @@
   "name": "json-tree",
   "version": "1.0.0",
   "description": "JSON tree view for Vue",
-  "main": "lib/JsonTree.common.js",
-  "scripts": {
-    "lib": "vue-cli-service build --target lib --name JsonTree --dest lib src/index.js",
-    "publish": "npm run lib && npm publish --registry https://www.npmjs.com/",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "deploy": "bash deploy.sh"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mathink12/json-tree.git"
-  },
-  "keywords": [
-    "JSON",
-    "tree",
-    "vue",
-    "view"
-  ],
   "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mathink12/json-tree/issues"
+  "scripts": {
+    "test:unit": "vue-cli-service test:unit",
+    "deploy": "bash scripts/deploy.sh",
+    "docs:build": "vuepress build docs",
+    "docs:dev": "vuepress dev docs",
+    "lib": "vue-cli-service build --target lib --name JsonTree --dest lib src/index.js",
+    "publish": "npm run lib && npm publish --registry https://www.npmjs.com/"
   },
-  "homepage": "https://github.com/mathink12/json-tree#readme",
+  "main": "lib/JsonTree.common.js",
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.9",
     "@vue/cli-plugin-eslint": "^4.5.9",
     "@vue/cli-plugin-unit-jest": "^4.5.9",
     "@vue/cli-service": "^4.5.9",
     "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/test-utils": "^1.0.3",
     "@vuepress/plugin-back-to-top": "^1.7.1",
     "async-validator": "^1.11.5",
     "babel-eslint": "^10.1.0",
@@ -50,13 +37,28 @@
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.7.1"
   },
+  "bugs": {
+    "url": "https://github.com/mathink12/json-tree/issues"
+  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
+  "homepage": "https://github.com/mathink12/json-tree#readme",
+  "keywords": [
+    "JSON",
+    "tree",
+    "vue",
+    "view"
+  ],
+  "license": "MIT",
   "lint-staged": {
     "*.{js,jsx,vue}": [
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathink12/json-tree.git"
   }
 }
