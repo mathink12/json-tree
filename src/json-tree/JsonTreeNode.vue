@@ -7,6 +7,7 @@
       :class="{
         'cursor-pointer': true,
         'json-tree__toggle': true,
+        'json-tree__toggle--collapse': localCollapse,
         'json-tree__toggle--hidden': shouldHideToggle
       }"
       @click.stop="onToggle">

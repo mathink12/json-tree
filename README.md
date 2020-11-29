@@ -8,3 +8,7 @@ JSON tree view for Vue.
 | [Demo & Docs](https://mathink12.github.io/json-tree/) | [Demo & Docs](http://mathink12.gitee.io/json-tree/) |
 
 ![demo](./docs/imgs/json-tree.gif)
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT)
