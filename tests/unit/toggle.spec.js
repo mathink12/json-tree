@@ -43,6 +43,7 @@ describe('JsonTree.vue toggle', () => {
   })
 
   it('toggle 切换交互', async () => {
+    const wrapper = factory()
     // 只判定第一个即可
     const rootToggle = wrapper.find('.json-tree__toggle')
     if (rootToggle.classes('json-tree__toggle--collapse')) {
@@ -53,10 +54,5 @@ describe('JsonTree.vue toggle', () => {
       await rootToggle.trigger('click')
       expect(rootToggle.classes('json-tree__toggle--collapse')).toBe(true)
     }
-  })
-
-  it('全部收起、全部展开', () => {
-    const wrapper = factory()
-    // wrapper.
   })
 })
