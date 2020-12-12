@@ -9,6 +9,7 @@
   // main.js
   import Vue from 'vue'
   import JsonTree from 'json-tree'
+  import 'json-tree/lib/JsonTree.css'
 
   Vue.component('JsonTree', JsonTree)
   ```
