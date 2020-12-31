@@ -1,6 +1,6 @@
 {
   "name": "json-tree",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JSON tree view for Vue",
   "author": "showmethecode@foxmail.com",
   "scripts": {
