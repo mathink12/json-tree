@@ -2,7 +2,7 @@
   "name": "json-tree",
   "version": "0.0.2",
   "description": "JSON tree view for Vue",
-  "author": "",
+  "author": "showmethecode@foxmail.com",
   "scripts": {
     "test:unit": "vue-cli-service test:unit",
     "deploy": "bash scripts/deploy.sh",
