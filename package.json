@@ -1,6 +1,6 @@
 {
   "name": "json-tree",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "JSON tree view for Vue",
   "author": "",
   "scripts": {
@@ -8,8 +8,9 @@
     "deploy": "bash scripts/deploy.sh",
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
-    "lib": "vue-cli-service build --target lib --name JsonTree --dest lib src/index.js",
-    "publish": "npm run lib && npm publish --registry https://www.npmjs.com/"
+    "build": "vue-cli-service build --target lib --name JsonTree --dest lib src/index.js",
+    "release": "standard-version",
+    "publish": "npm publish --registry https://www.npmjs.com/"
   },
   "main": "lib/JsonTree.common.js",
   "devDependencies": {
@@ -22,6 +23,7 @@
     "@vuepress/plugin-back-to-top": "^1.7.1",
     "async-validator": "^1.11.5",
     "babel-eslint": "^10.1.0",
+    "cz-conventional-changelog": "^3.3.0",
     "element-ui": "^2.14.1",
     "eslint": "^7.13.0",
     "eslint-plugin-import": "^2.22.1",
@@ -32,6 +34,7 @@
     "lint-staged": "^10.5.1",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
+    "standard-version": "^9.1.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.12",
@@ -60,5 +63,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mathink12/json-tree.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
