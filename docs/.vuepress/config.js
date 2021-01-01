@@ -10,7 +10,8 @@ module.exports = {
   },
   themeConfig: {
     nav: [
-      { text: 'GitHub', link: 'https://github.com/mathink12/json-tree' }
+      { text: 'GitHub', link: 'https://github.com/mathink12/json-tree' },
+      { text: 'Gitee', link: 'https://gitee.com/mathink12/json-tree' }
     ],
     sidebar: [
       '/',
